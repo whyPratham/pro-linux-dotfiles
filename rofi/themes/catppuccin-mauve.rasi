@@ -1,0 +1,85 @@
+* {
+    mauve:                       #cba6f7;
+    base:                        #1e1e2e;
+    mantle:                      #181825;
+    surface0:                    #313244;
+    surface1:                    #45475a;
+    text:                        #cdd6f4;
+    subtext:                     #a6adc8;
+
+    background-color:            transparent;
+    text-color:                  @text;
+    font:                        "JetBrainsMono Nerd Font 11";
+}
+
+window {
+    background-color:            @base;
+    border:                      2px;
+    border-color:                @mauve;
+    border-radius:               12px;
+    padding:                     20px;
+    width:                       500px;
+}
+
+mainbox {
+    background-color:            transparent;
+    children:                    [inputbar, listview];
+    spacing:                     10px;
+}
+
+inputbar {
+    background-color:            @surface0;
+    border-radius:               8px;
+    padding:                     10px;
+    children:                    [prompt, entry];
+    spacing:                     10px;
+}
+
+prompt {
+    background-color:            transparent;
+    text-color:                  @mauve;
+}
+
+entry {
+    background-color:            transparent;
+    text-color:                  @text;
+    placeholder-color:           @subtext;
+    placeholder:                 "Search...";
+}
+
+listview {
+    background-color:            transparent;
+    columns:                     1;
+    lines:                       8;
+    spacing:                     4px;
+    scrollbar:                   false;
+}
+
+element {
+    background-color:            transparent;
+    border-radius:               6px;
+    padding:                     8px 12px;
+    spacing:                     10px;
+    children:                    [element-icon, element-text];
+    border:                      0px 0px 1px 0px;
+    border-color:                @surface1;
+}
+
+element last {
+    border:                      0px;
+}
+
+element selected {
+    background-color:            @surface0;
+    text-color:                  @mauve;
+}
+
+element-icon {
+    background-color:            transparent;
+    size:                        24px;
+}
+
+element-text {
+    background-color:            transparent;
+    text-color:                  inherit;
+}
