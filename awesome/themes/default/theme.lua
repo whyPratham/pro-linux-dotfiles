@@ -52,7 +52,7 @@ theme.fg_urgent = mocha.base
 theme.fg_minimize = mocha.subtext
 
 -- Gaps and borders
-theme.useless_gap = dpi(6)
+theme.useless_gap = dpi(2) -- default = 6
 theme.border_width = dpi(2)
 theme.border_normal = mocha.surface1
 theme.border_focus = accent

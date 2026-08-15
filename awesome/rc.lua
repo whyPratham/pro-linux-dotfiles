@@ -65,9 +65,9 @@ local separator = wibox.widget({
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
--- Load Debian menu entries
-local debian = require("debian.menu")
-local has_fdo, freedesktop = pcall(require, "freedesktop")
+-- Load Debian menu entries (no need in Arch)
+-- local debian = require("debian.menu")
+-- local has_fdo, freedesktop = pcall(require, "freedesktop")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -116,11 +116,11 @@ end
 awful.spawn.with_shell(
 	"python3 -c \"import ctypes; xlib = ctypes.CDLL('libX11.so.6'); d = xlib.XOpenDisplay(None); xlib.XkbSetDetectableAutoRepeat(d, True, None); xlib.XCloseDisplay(d)\""
 )
-awful.spawn.with_shell("picom --config ~/.config/picom/picom.conf")
-awful.spawn.with_shell("feh --bg-scale ~/Pictures/wallpapers/biking-sunset.jpg")
+-- awful.spawn.with_shell("picom --config ~/.config/picom/picom.conf")  uncomment to use the beautiful animations, windows blur effects, etc.
+awful.spawn.with_shell("feh --bg-scale ~/pro-linux-dotfiles/wallpapers/basement.jpg")
 awful.spawn.with_shell("sleep 1 && dunst")
 awful.spawn.with_shell("nm-applet")
-awful.spawn.with_shell("usr/bin/lxpolkit")
+awful.spawn.with_shell("usr/bin/polkit-gnome/polkit-gnome-authentication-agent-1")
 awful.spawn.with_shell("copyq")
 awful.spawn.with_shell("blueman-applet")
 awful.spawn.with_shell("xss-lock -- betterlockscreen -l blur")
@@ -189,20 +189,12 @@ myawesomemenu = {
 local menu_awesome = { "awesome", myawesomemenu, beautiful.awesome_icon }
 local menu_terminal = { "open terminal", terminal }
 
-if has_fdo then
-	mymainmenu = freedesktop.menu.build({
-		before = { menu_awesome },
-		after = { menu_terminal },
-	})
-else
-	mymainmenu = awful.menu({
-		items = {
-			menu_awesome,
-			{ "Debian", debian.menu.Debian_menu.Debian },
-			menu_terminal,
-		},
-	})
-end
+mymainmenu = awful.menu({
+    items = {
+        menu_awesome,
+        menu_terminal,
+    },
+})
 
 mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon, menu = mymainmenu })
 
@@ -382,7 +374,18 @@ awful.screen.connect_for_each_screen(function(s)
 			separator,
 			widget_box(cpu_widget()),
 			separator,
-			widget_box(volume_widget()),
+			widget_box(volume_widget({
+    			    widget_type = 'horizontal_bar',
+    			    with_icon = true,
+    			    mute_color = '#f38ba8',
+    			    main_color = '#cba6f7',
+    			    bg_color = '#313244',
+    			    lmargin = 5,
+    			    rmargin = 5,
+    			    height = 10,
+    			    width = 60,
+    			    mixer_cmd = 'pavucontrol',
+			})),
 			separator,
 			widget_box(battery_widget({
 				path_to_icons = "/usr/share/icons/Papirus/24x24/panel/",
@@ -527,7 +530,7 @@ globalkeys = gears.table.join(
 
 	--Open browser
 	awful.key({ modkey }, "b", function()
-		awful.spawn("/usr/bin/brave-browser")
+		awful.spawn("/usr/bin/brave")
 	end, { description = "open brave", group = "launcher" }),
 
 	--Open file manager(nemo)
