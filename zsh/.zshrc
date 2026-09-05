@@ -15,7 +15,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="terminalparty"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -122,5 +122,7 @@ alias ls='eza --group-directories-first --icons=auto'
 alias ll='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
+# alias fastfetch='fastfetch --logo arch2'
 
-fastfetch
+neofetch
+source ~/powerlevel10k/powerlevel10k.zsh-theme
