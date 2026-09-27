@@ -117,7 +117,7 @@ awful.spawn.with_shell(
 	"python3 -c \"import ctypes; xlib = ctypes.CDLL('libX11.so.6'); d = xlib.XOpenDisplay(None); xlib.XkbSetDetectableAutoRepeat(d, True, None); xlib.XCloseDisplay(d)\""
 )
 -- awful.spawn.with_shell("picom --config ~/.config/picom/picom.conf") -- uncomment to use the beautiful animations, windows blur effects, etc.
-awful.spawn.with_shell("feh --bg-scale ~/Pictures/wallpapers/catppuccin-cat.png")
+awful.spawn.with_shell("feh --bg-scale ~/.dotfiles/wallpapers/catppuccin-cat.png")
 awful.spawn.with_shell("sleep 1 && dunst")
 awful.spawn.with_shell("nm-applet")
 awful.spawn.with_shell("usr/bin/polkit-gnome/polkit-gnome-authentication-agent-1")

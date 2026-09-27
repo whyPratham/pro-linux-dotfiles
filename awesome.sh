@@ -348,18 +348,33 @@ install_awesome_widgets() {
     print_header "Step 9 — Installing awesome-wm-widgets"
 
     local widgets_dir="$HOME_DIR/.config/awesome/awesome-wm-widgets"
+
+    # Explicitly create directory structure and set correct ownership
+    # BEFORE attempting clone — service runs as root so directories
+    # created by previous steps may be owned by root not the user
     mkdir -p "$HOME_DIR/.config/awesome"
+    chown -R "$USERNAME:$USERNAME" "$HOME_DIR/.config"
+    chmod 755 "$HOME_DIR/.config/awesome"
 
     if [ -d "$widgets_dir" ]; then
         print_warning "awesome-wm-widgets exists — re-cloning."
         rm -rf "$widgets_dir"
     fi
 
+    print_step "Cloning awesome-wm-widgets..."
     if run_as_user "git clone https://github.com/streetturtle/awesome-wm-widgets $widgets_dir"; then
         chown -R "$USERNAME:$USERNAME" "$widgets_dir"
         print_success "awesome-wm-widgets cloned."
     else
-        print_warning "Failed to clone awesome-wm-widgets."
+        # Retry once as fallback
+        print_warning "First clone attempt failed — retrying..."
+        sleep 3
+        if run_as_user "git clone https://github.com/streetturtle/awesome-wm-widgets $widgets_dir"; then
+            chown -R "$USERNAME:$USERNAME" "$widgets_dir"
+            print_success "awesome-wm-widgets cloned on retry."
+        else
+            print_warning "Failed to clone awesome-wm-widgets — skipping."
+        fi
     fi
 }
 
