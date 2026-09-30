@@ -196,7 +196,7 @@ No manual intervention. Just answer a few questions during installation (hostnam
 ```bash
 # Boot from the PRO Linux ISO
 # Then run:
-bash install.sh
+proinstall
 ```
 
 The installer will ask you for:
