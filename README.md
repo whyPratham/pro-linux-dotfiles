@@ -196,7 +196,7 @@ No manual intervention. Just answer a few questions during installation (hostnam
 ```bash
 # Boot from the PRO Linux ISO
 # Then run:
-bash install.sh
+proinstall
 ```
 
 The installer will ask you for:
@@ -211,13 +211,15 @@ Everything else is automatic.
 
 ## 👥 The Team
 
-PRO Linux is built by **Surgeons of Tech** — a team of CS/IT students who wanted a better out-of-the-box Linux experience.
+PRO Linux is built by **Surgeons of Tech** — a team of IT students who wanted a better out-of-the-box Linux experience.
 
 | Member | GitHub |
 |--------|--------|
 | Pratham | [@whyPratham](https://github.com/whyPratham) |
-| Raghav | *add link* |
-| Omkar | *add link* |
+| Punit Patil | [@Punit-999](https://github.com/Punit-999)
+| Raghav | [@RAGHAV-IRLEKAR](https://github.com/RAGHAV-IRLEKAR) |
+| Omkar | [@OMKAR176-CREAT](https://github.com/OMKAR176-CREAT) |
+
 
 ---
 
