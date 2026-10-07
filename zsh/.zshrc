@@ -124,5 +124,4 @@ alias la='ls -a'
 alias lla='ls -la'
 # alias fastfetch='fastfetch --logo arch2'
 
-neofetch
-source ~/powerlevel10k/powerlevel10k.zsh-theme
+fastfetch
